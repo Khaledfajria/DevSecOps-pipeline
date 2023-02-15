@@ -3,7 +3,10 @@ FROM python:3.8-alpine
 
 # Set the working directory in the container
 WORKDIR /app
+
+# Copy the source distribution archive to the container
 COPY dist/Django-ecommerce-1.0.0.tar.gz /app/
+
 RUN tar -xzf Django-ecommerce-1.0.0.tar.gz && \
     cd Django-ecommerce-1.0.0 && \
     pip install .
