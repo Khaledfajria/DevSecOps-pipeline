@@ -5,12 +5,12 @@ FROM python:3.8-alpine
 WORKDIR /app
 
 # Copy the source distribution archive to the container
-COPY dist/Django-ecommerce-1.0.0.tar.gz /app/
-
+COPY dist/Django-ecommerce-1.1.0.tar.gz /app/
+RUN pip install Django-ecommerce-1.1.0.tar.gz
 # Extract the source distribution archive and install the package
-RUN tar -xzf Django-ecommerce-1.0.0.tar.gz && \
-    cd Django-ecommerce-1.0.0 && \
-    pip install .
+#RUN tar -xzf Django-ecommerce-1.0.0.tar.gz && \
+#    cd Django-ecommerce-1.0.0 && \
+#    pip install .
 
 # Set the environment variables
 #ENV DJANGO_SETTINGS_MODULE=djecommerce.settings.development
