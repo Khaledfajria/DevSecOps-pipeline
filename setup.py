@@ -1,8 +1,11 @@
 from setuptools import setup, find_packages
 
+with open('VERSION') as f:
+    version = f.read().strip()
+
 setup(
     name='Django-ecommerce',
-    version='1.1.0',
+    version=version,
     description='Django Ecommerce',
     author='Khaled Benfajria',
     author_email='benfajria.khaled11@gmail.com',
