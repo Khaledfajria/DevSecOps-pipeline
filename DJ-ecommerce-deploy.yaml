@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecommerce-web
+  template:
+    metadata:
+      labels:
+        app: ecommerce-web
+    spec:
+      containers:
+      - name: ecommerce-web
+        image: replace-image
+        ports:
+        - containerPort: 8000
+        env:
+        - name: SECRET_KEY
+          value: <your-secret-key>
+        - name: DEBUG
+          value: "True"
+        - name: ALLOWED_HOSTS
+          value: "*"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecommerce-web-service
+spec:
+  selector:
+    app: ecommerce-web
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+    nodePort: 30000
+  type: NodePort
