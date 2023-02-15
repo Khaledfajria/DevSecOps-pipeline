@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Jenkins.Application.Settings">
-    <option name="serverUrl" value="https://8081-port-45a0f438e2494e64.labs.kodekloud.com/" />
+    <option name="serverUrl" value="https://8081-port-22636b045ef04c8f.labs.kodekloud.com/" />
   </component>
 </project>
