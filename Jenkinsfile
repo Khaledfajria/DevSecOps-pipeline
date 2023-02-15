@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Artifact') {
             steps {
-                echo "pass"
+                sh "pip install setuptools"
                 sh 'python3 setup.py sdist'
             }
         }
