@@ -3,15 +3,20 @@ FROM python:3.8-alpine
 
 # Set the working directory in the container
 WORKDIR /app
+COPY dist/Django-ecommerce-1.0.0.tar.gz /app/
+RUN tar -xzf Django-ecommerce-1.0.0.tar.gz && \
+    cd Django-ecommerce-1.0.0 && \
+    pip install .
+
 
 # Copy the code to the container
-COPY . .
+#COPY . .
 
 # Upgrade pip
-RUN python -m pip install --upgrade pip
+#RUN python -m pip install --upgrade pip
 
 # Install the dependencies
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
 # Set the environment variables
 ENV DJANGO_SETTINGS_MODULE=djecommerce.settings.development
