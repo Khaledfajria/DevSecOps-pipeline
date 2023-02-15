@@ -5,7 +5,7 @@ pipeline {
         stage('Build Artifact') {
             steps {
                 echo "pass"
-                //sh 'python setup.py sdist'
+                sh 'python3 setup.py sdist'
             }
         }
 
