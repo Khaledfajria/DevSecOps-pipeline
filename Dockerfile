@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the code to the container
 COPY . .
-
+RUN ls
 # Upgrade pip
 RUN python -m pip install --upgrade pip
 RUN pip install virtualenv
