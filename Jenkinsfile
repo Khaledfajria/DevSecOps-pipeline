@@ -4,17 +4,7 @@ pipeline {
     stages {
         stage('Build Artifact') {
             steps {
-                //sh 'sudo apt install pip -y'
-                //sh 'python3 -m pip install --upgrade pip'
-                //sh 'python3 -m venv'
-                //sh 'source venv/bin/activate'
-                //sh 'pip install virtualenv --target=/var/lib/jenkins/workspace/django'
-                //sh '$VIRTUALENV_EXECUTABLE env'
-                //sh 'source env/bin/activate'
-                //sh 'pip install --no-cache-dir -r requirements.txt'
-                echo "pass"
-                //sh 'python manage.py collectstatic'
-                //archiveArtifacts artifacts: '**/dist/*.tar.gz', excludes: 'dist/build'
+                sh 'python setup.py sdist'
             }
         }
 

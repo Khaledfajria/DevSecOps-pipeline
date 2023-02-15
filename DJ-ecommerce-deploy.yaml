@@ -17,13 +17,6 @@ spec:
         image: replace-image
         ports:
         - containerPort: 8000
-        env:
-        - name: SECRET_KEY
-          value: <your-secret-key>
-        - name: DEBUG
-          value: "True"
-        - name: ALLOWED_HOSTS
-          value: "*"
 ---
 apiVersion: v1
 kind: Service
