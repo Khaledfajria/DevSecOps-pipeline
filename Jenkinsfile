@@ -8,7 +8,7 @@ pipeline {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
                 sh 'pip install bumpversion'
-                sh '/var/lib/jenkins/.local/bin/bumpversion patch '
+                sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch '
                 sh "pip install setuptools"
                 sh 'python3 setup.py sdist'
             }
