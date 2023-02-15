@@ -5,6 +5,7 @@ db.sqlite3
 manage.py
 requirements.txt
 setup.py
+version.txt
 Django_ecommerce.egg-info/PKG-INFO
 Django_ecommerce.egg-info/SOURCES.txt
 Django_ecommerce.egg-info/dependency_links.txt
