@@ -15,6 +15,7 @@ RUN virtualenv env
 RUN source env/bin/activate
 # Install the dependencies
 RUN pip install -r requirements.txt
+RUN python manage.pt makemigrations
 RUN python manage.py migrate
 # Set the environment variables
 ENV DJANGO_SETTINGS_MODULE=djecommerce.settings.development
