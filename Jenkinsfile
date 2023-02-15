@@ -5,7 +5,7 @@ pipeline {
         stage('Build Artifact') {
             steps {
                 sh 'pip install bumpversion'
-                sh 'bumpversion patch'
+                sh '/var/lib/jenkins/.local/bin/bumpversion patch'
                 sh "pip install setuptools"
                 sh 'python3 setup.py sdist'
             }
