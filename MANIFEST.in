@@ -1,0 +1,8 @@
+recursive-include djecommerce *
+recursive-include core *
+include manage.py
+recursive-include templates *
+recursive-include static_in_env *
+include .env
+include db.sqlite3
+include requirements.txt
