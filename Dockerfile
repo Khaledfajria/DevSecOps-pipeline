@@ -10,9 +10,9 @@ COPY .env /app/
 
 # Upgrade pip
 RUN python -m pip install --upgrade pip
-RUN pip install virtualenv
-RUN virtualenv env
-RUN source env/bin/activate
+#RUN pip install virtualenv
+#RUN virtualenv env
+#RUN source env/bin/activate
 # Install the dependencies
 RUN pip install -r requirements.txt
 
