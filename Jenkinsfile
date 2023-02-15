@@ -4,6 +4,8 @@ pipeline {
     stages {
         stage('Build Artifact') {
             steps {
+                sh 'git config --global user.email "you@example.com"'
+                sh 'git config --global user.name "Your Name"'
                 sh 'pip install bumpversion'
                 sh '/var/lib/jenkins/.local/bin/bumpversion patch '
                 sh "pip install setuptools"
