@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-with open('VERSION') as f:
+with open('version.txt') as f:
     version = f.read().strip()
 
 setup(
