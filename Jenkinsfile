@@ -8,7 +8,9 @@ pipeline {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
                 sh 'pip install bumpversion'
-                sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch '
+                sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
+                def version = sh(script: 'cat version.txt', returnStdout: true).trim()
+                env.IMAGE_TAG = "${version}-${env.BUILD_NUMBER}"
                 sh "pip install setuptools"
                 sh 'python3 setup.py sdist'
             }
@@ -25,7 +27,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                sh 'sudo docker build -t my-django-ecommerce-image:$version-$BUILD_NUMBER .'
+                sh 'sudo docker build -t my-django-ecommerce-image:$env.IMAGE_TAG .'
                 //sh 'docker push my-django-ecommerce-image'
             }
         }
