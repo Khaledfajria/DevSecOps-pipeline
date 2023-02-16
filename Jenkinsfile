@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Build Artifact') {
             steps {
-                script{
-                    withCredentials([usernamePassword(credentialsId: 'kk', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         echo 'incrementing app version...'
                         sh 'git checkout master'
                         sh 'git pull'
@@ -18,19 +17,18 @@ pipeline {
                         sh "pip install setuptools"
                         sh 'python3 setup.py sdist'
                         sh 'git add .'
-                        sh "git commit -m 'Bump version'"
+                        sh "git commit -m 'Bump version' || true"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
                         //env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                         //echo "$env.IMAGE_TAG"
                     }
-                }
             }
         }
 
         stage('Unit Tests') {
             steps {
                 echo 'pass'
-                //sh 'python manage.py test'
+                sh 'python manage.py test'
                 //junit '**/junit.xml'
             }
         }
