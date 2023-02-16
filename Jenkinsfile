@@ -31,8 +31,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                sh 'sudo docker build -t my-django-ecommerce-image:$env.IMAGE_TAG .'
-                //sh 'docker push my-django-ecommerce-image'
+                sh 'sudo docker build -t my-django-ecommerce-image:$BUILD_NUMBER
             }
         }
 
