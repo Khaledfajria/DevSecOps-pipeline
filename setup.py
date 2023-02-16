@@ -5,7 +5,7 @@ with open('version.txt') as f:
 
 setup(
     name='Django-ecommerce',
-    version='version',
+    version=version,
     description='Django Ecommerce',
     author='Khaled Benfajria',
     author_email='benfajria.khaled11@gmail.com',
