@@ -28,7 +28,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                sh 'sudo docker build -t my-django-ecommerce-image:$env.IMAGE_TAG .'
+                //sh 'sudo docker build -t my-django-ecommerce-image:$env.IMAGE_TAG .'
                 //sh 'docker push my-django-ecommerce-image'
             }
         }
@@ -37,10 +37,10 @@ pipeline {
             steps {
                 echo "pass"
                 //Install k8s-cli plugin
-                withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh "sed -i 's#replace-image#my-django-ecommerce-image:$BUILD_NUMBER#g' DJ-ecommerce-deploy.yaml"
-                    sh 'kubectl apply -f DJ-ecommerce-deploy.yaml'
-                }
+                //withKubeConfig([credentialsId: 'kubeconfig']) {
+                   // sh "sed -i 's#replace-image#my-django-ecommerce-image:$BUILD_NUMBER#g' DJ-ecommerce-deploy.yaml"
+                   // sh 'kubectl apply -f DJ-ecommerce-deploy.yaml'
+               // }
             }
         }
     }
