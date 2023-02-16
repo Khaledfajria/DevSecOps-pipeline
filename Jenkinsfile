@@ -14,7 +14,7 @@ pipeline {
                         //def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                         sh '/var/lib/jenkins/.local/bin/bumpversion patch'
                         sh 'git add .'
-                        sh 'git commit -m "Bump version"'
+                        sh "git commit -m 'Bump version'"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
                         //env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                         //echo "$env.IMAGE_TAG"
