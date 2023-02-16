@@ -13,6 +13,7 @@ pipeline {
                     sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
                     def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                     env.IMAGE_TAG = "${version}-${env.BUILD_NUMBER}"
+                    sh 'cat $env.IMAGE_TAG'
                     //sh "pip install setuptools"
                     //sh 'python3 setup.py sdist'
 
