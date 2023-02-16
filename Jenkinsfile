@@ -8,6 +8,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'kk', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         echo 'incrementing app version...'
                         sh 'git pull'
+                        sh 'git checkout master'
                         sh 'rm -rf ./dist/'
                         sh 'git config --global user.email "benfajria.khaled11@gmail.com"'
                         sh 'git config --global user.name "Khaled"'
@@ -16,7 +17,6 @@ pipeline {
                         sh '/var/lib/jenkins/.local/bin/bumpversion patch'
                         sh "pip install setuptools"
                         sh 'python3 setup.py sdist'
-                        sh 'git checkout master'
                         sh 'git add .'
                         sh "git commit -m 'Bump version'"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
