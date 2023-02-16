@@ -14,7 +14,7 @@ pipeline {
                     sh '/var/lib/jenkins/.local/bin/bumpversion patch'
                     sh 'git add .'
                     sh 'git commit -m "Bump version"'
-                    sh 'git push origin main'
+                    sh 'git push origin master'
                     //env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                     //echo "$env.IMAGE_TAG"
                     //sh "pip install setuptools"
