@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Build Artifact') {
             steps {
+                echo 'incrementing app version...'
                 sh 'rm -rf ./dist/'
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
