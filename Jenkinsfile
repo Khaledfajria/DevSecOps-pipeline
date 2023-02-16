@@ -10,7 +10,7 @@ pipeline {
                     sh 'git config --global user.email "you@example.com"'
                     sh 'git config --global user.name "Your Name"'
                     sh 'pip install bumpversion'
-                    sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
+                    sh '/var/lib/jenkins/.local/bin/bumpversion  --current-version $(cat version.txt) patch --allow-dirty --tag --commit ./setup.py'
                     def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                     echo "The version is: $version"
                     env.IMAGE_TAG = "$version-$BUILD_NUMBER"
