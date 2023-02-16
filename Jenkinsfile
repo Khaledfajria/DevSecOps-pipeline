@@ -14,7 +14,7 @@ pipeline {
                         sh 'git config --global user.name "Khaled"'
                         sh 'pip install bumpversion'
                         //def version = sh(script: 'cat version.txt', returnStdout: true).trim()
-                        sh '/var/lib/jenkins/.local/bin/bumpversion patch'
+                        sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
                         sh "pip install setuptools"
                         sh 'python3 setup.py sdist'
                         sh 'git add .'
