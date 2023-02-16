@@ -13,6 +13,7 @@ pipeline {
                         sh 'pip install bumpversion'
                         //def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                         sh '/var/lib/jenkins/.local/bin/bumpversion patch'
+                        sh 'git checkout master'
                         sh 'git add .'
                         sh "git commit -m 'Bump version'"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
