@@ -13,7 +13,6 @@ pipeline {
                     sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
                     def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                     env.IMAGE_TAG = "${version}-${env.BUILD_NUMBER}"
-                    sh 'cat $env.IMAGE_TAG'
                     //sh "pip install setuptools"
                     //sh 'python3 setup.py sdist'
 
@@ -32,7 +31,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                //sh 'sudo docker build -t my-django-ecommerce-image:$env.IMAGE_TAG .'
+                sh 'sudo docker build -t my-django-ecommerce-image:$env.IMAGE_TAG .'
                 //sh 'docker push my-django-ecommerce-image'
             }
         }
