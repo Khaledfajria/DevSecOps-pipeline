@@ -5,7 +5,7 @@ pipeline {
         stage('Build Artifact') {
             steps {
                 script{
-                    withCredentials([usernamePassword(credentialsId: 'kk', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                    withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         echo 'incrementing app version...'
                         sh 'git checkout master'
                         sh 'git pull'
