@@ -14,6 +14,7 @@ pipeline {
                     def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                     echo "The version is: $version"
                     env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+                    echo "$env.IMAGE_TAG"
                     //sh "pip install setuptools"
                     //sh 'python3 setup.py sdist'
 
