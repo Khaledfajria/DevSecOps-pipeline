@@ -6,16 +6,14 @@ pipeline {
             steps {
                 script{
                     echo 'incrementing app version...'
-                    sh 'rm -rf ./dist/'
+                    //sh 'rm -rf ./dist/'
                     sh 'git config --global user.email "you@example.com"'
                     sh 'git config --global user.name "Your Name"'
                     sh 'pip install bumpversion'
-                    sh 'export PATH=/var/lib/jenkins/.local/bin/bumpversion:$PATH'
-                    def version = sh(script: 'cat version.txt', returnStdout: true).trim()
-                    sh "sed -i 's/version=.*/version=\"${version}\",/' setup.py"
+                    //def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                     sh 'bumpversion --allow-dirty patch'
-                    env.IMAGE_TAG = "$version-$BUILD_NUMBER"
-                    echo "$env.IMAGE_TAG"
+                    //env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+                    //echo "$env.IMAGE_TAG"
                     //sh "pip install setuptools"
                     //sh 'python3 setup.py sdist'
 
@@ -34,7 +32,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                sh 'sudo docker build -t my-django-ecommerce-image:${IMAGE_TAG} .'
+                //sh 'sudo docker build -t my-django-ecommerce-image:${IMAGE_TAG} .'
             }
         }
 
