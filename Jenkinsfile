@@ -12,7 +12,8 @@ pipeline {
                     sh 'pip install bumpversion'
                     sh 'export PATH=/var/lib/jenkins/.local/bin/bumpversion:$PATH'
                     def version = sh(script: 'cat version.txt', returnStdout: true).trim()
-                    sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
+                    sh "sed -i 's/version=.*/version=\"${version}\",/' setup.py"
+                    sh 'bumpversion --allow-dirty patch'
                     env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                     echo "$env.IMAGE_TAG"
                     //sh "pip install setuptools"
