@@ -10,7 +10,7 @@ pipeline {
                 sh 'git config --global user.name "Your Name"'
                 sh 'pip install bumpversion'
                 sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
-                def 'version = sh(script: 'cat version.txt', returnStdout: true).trim()'
+                def "version = sh(script: 'cat version.txt', returnStdout: true).trim()"
                 env.IMAGE_TAG = "${version}-${env.BUILD_NUMBER}"
                 //sh "pip install setuptools"
                 //sh 'python3 setup.py sdist'
