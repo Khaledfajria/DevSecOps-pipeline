@@ -7,11 +7,14 @@ pipeline {
                 script{
                     echo 'incrementing app version...'
                     //sh 'rm -rf ./dist/'
-                    sh 'git config --global user.email "you@example.com"'
-                    sh 'git config --global user.name "Your Name"'
+                    sh 'git config --global user.email "benfajria.khaled11@gmail.com"'
+                    sh 'git config --global user.name "Khaled"'
                     sh 'pip install bumpversion'
                     //def version = sh(script: 'cat version.txt', returnStdout: true).trim()
-                    sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
+                    sh '/var/lib/jenkins/.local/bin/bumpversion patch'
+                    sh 'git add .'
+                    sh 'git commit -m "Bump version"'
+                    sh 'git push origin main'
                     //env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                     //echo "$env.IMAGE_TAG"
                     //sh "pip install setuptools"
