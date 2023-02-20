@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-                stage('SonarQube') {
+        stage('SonarQube') {
             steps {
                 echo 'pass'
                 sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.sources=. -Dsonar.host.url=https://9000-port-b2d66ea8ecf04937.labs.kodekloud.com
