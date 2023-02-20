@@ -41,10 +41,10 @@ pipeline {
 
         stage('SonarQube') {
             steps {
-                withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
+                //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
                     echo 'pass'
-                    sh "/home/bob/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.sources=. -Dsonar.host.url=https://9000-port-b2d66ea8ecf04937.labs.kodekloud.com"
-                }
+                    sh "sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.sources=. -Dsonar.host.url=https://9000-port-b2d66ea8ecf04937.labs.kodekloud.com -Dsonar.login=sqp_752784e70a4d974161e2191c75412fadcdcaca73"
+                //}
             }
         }
 
