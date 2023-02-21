@@ -1,6 +1,0 @@
-projectKey=django-eco
-serverUrl=https://9000-port-03d29ffe9cd04f06.labs.kodekloud.com
-serverVersion=9.9.0.65466
-dashboardUrl=https://9000-port-03d29ffe9cd04f06.labs.kodekloud.com/dashboard?id=django-eco
-ceTaskId=AYZ0JiPg2hDpDvBO0Hqj
-ceTaskUrl=https://9000-port-03d29ffe9cd04f06.labs.kodekloud.com/api/ce/task?id=AYZ0JiPg2hDpDvBO0Hqj
