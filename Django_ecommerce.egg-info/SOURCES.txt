@@ -15,7 +15,6 @@ core/admin.py
 core/apps.py
 core/forms.py
 core/models.py
-core/tests.py
 core/urls.py
 core/views.py
 core/__pycache__/__init__.cpython-38.pyc
@@ -23,7 +22,6 @@ core/__pycache__/admin.cpython-38.pyc
 core/__pycache__/forms.cpython-38.pyc
 core/__pycache__/models.cpython-38.pyc
 core/__pycache__/tests.cpython-38-pytest-7.2.1.pyc
-core/__pycache__/tests.cpython-38.pyc
 core/__pycache__/urls.cpython-38.pyc
 core/__pycache__/views.cpython-38.pyc
 core/management/commands/rename.py
