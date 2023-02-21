@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo 'passs'
                 sh "pip install -r requirements.txt"
-                sh "source venv/Scripts/activate"
+                sh ". venv/Scripts/activate"
                 sh "pip install coverage"
                 //sh "python3 manage.py test"
                 sh "coverage run --source='.' manage.py test"
