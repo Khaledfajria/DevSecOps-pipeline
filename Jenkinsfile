@@ -35,7 +35,8 @@ pipeline {
             steps {
                 echo 'passs'
                 sh "pip install -r requirements.txt"
-                sh 'python3 manage.py test'
+                sh 'coverage run --source='.' manage.py test'
+                sh 'coverage xml'
                 //junit '**/junit.xml'
             }
         }
