@@ -34,6 +34,7 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo 'passs'
+                sh "pip install -r requirements.txt"
                 //sh "pip install virtualenv "
                 //sh "/var/lib/jenkins/.local/bin/virtualenv env"
                 //sh "source env/bin/activate"
