@@ -33,8 +33,7 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                echo 'passs'
-                sh "source venv/Scripts/activate"
+                echo 'pass'
                 sh 'python3 manage.py test'
                 //junit '**/junit.xml'
             }
