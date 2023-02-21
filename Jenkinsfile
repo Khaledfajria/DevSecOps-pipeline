@@ -37,7 +37,7 @@ pipeline {
                 sh "pip install -r requirements.txt"
                 sh "pip install coverage"
                 //sh "python3 manage.py test"
-                sh 'coverage run --source='.' manage.py test'
+                sh "coverage run --source='.' manage.py test"
                 sh 'coverage xml'
                 //junit '**/junit.xml'
             }
