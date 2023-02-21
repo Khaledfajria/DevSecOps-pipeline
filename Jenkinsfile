@@ -47,7 +47,7 @@ pipeline {
             steps {
                 //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
                     echo 'pass'
-                    sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-a3e6ffb17c304060.labs.kodekloud.com -Dsonar.login=sqp_aa77361ba4f7ec28feb1433530398f558581096f"
+                    sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-a5233b190e794c6b.labs.kodekloud.com -Dsonar.login=sqp_cfe7a72544e6f2bb7e46af34e32dce874e219e9e"
                 //}
             }
         }
