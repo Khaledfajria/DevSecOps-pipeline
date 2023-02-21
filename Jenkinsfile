@@ -34,9 +34,9 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo 'pass'
-                sh "pip install virtualenv "
-                sh "/var/lib/jenkins/.local/bin/virtualenv env"
-                sh "source env/bin/activate"
+                //sh "pip install virtualenv "
+                //sh "/var/lib/jenkins/.local/bin/virtualenv env"
+                //sh "source env/bin/activate"
                 sh 'python3 manage.py test'
                 //junit '**/junit.xml'
             }
