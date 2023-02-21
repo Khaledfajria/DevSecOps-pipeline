@@ -2,5 +2,5 @@
 .pytest_cache
 Django_ecommerce.egg-info
 .scannerwork
-#.coverage
-#coverage.xml
+.coverage
+coverage.xml
