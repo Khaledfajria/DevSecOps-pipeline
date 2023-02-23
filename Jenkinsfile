@@ -16,6 +16,9 @@ pipeline {
                         sh "pip install -r requirements.txt"
                         sh "/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch"
                         sh "version=\$(grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3)"
+                        script {
+                            version = sh(returnStdout: true, script: 'echo $version').trim()
+                        }
                         sh 'python3 setup.py sdist'
                         sh "git add . && git commit -m 'Bump version' || true"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
