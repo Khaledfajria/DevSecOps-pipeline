@@ -29,7 +29,7 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                echo 'pass'
+                echo 'passs'
                 //sh "pip install -r requirements.txt"
                 //sh "pip install coverage"
                 //sh "python3 manage.py test"
