@@ -52,7 +52,7 @@ pipeline {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
                     protocol: 'https',
-                    nexusUrl: 'https://8081-port-cc4bfc617b5e495d.labs.kodekloud.com/repository/Djecommerce-artifact/',
+                    nexusUrl: 'https://8081-port-f36691d074be4323.labs.kodekloud.com/repository/Djecommerce-artifact/',
                     groupId: 'com.Zed',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
