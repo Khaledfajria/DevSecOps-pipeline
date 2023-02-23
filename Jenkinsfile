@@ -53,7 +53,6 @@ pipeline {
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     nexusUrl: '172.174.113.172:8081/repository/Djecommerce-artifact/',
-                    groupId: '',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
                     credentialsId: 'jenkins-nexus',
