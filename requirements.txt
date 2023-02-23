@@ -24,3 +24,4 @@ coverage
 setuptools~=66.1.1
 pytest~=7.2.1
 bumpversion
+nexus-uploader

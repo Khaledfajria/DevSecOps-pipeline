@@ -47,6 +47,21 @@ pipeline {
                 //}
             }
         }
+        stage('Publish to Nexus') {
+            steps {
+                nexusArtifactUploader (
+                    nexusVersion: 'nexus3',
+                    protocol: 'https',
+                    nexusUrl: 'https://8081-port-cc4bfc617b5e495d.labs.kodekloud.com/repository/Djecommerce-artifact/',
+                    groupId: 'com.Zed',
+                    version: "${version}",
+                    repository: 'Djecommerce-artifact',
+                    credentialsId: 'jenkins-nexus',
+                    artifact: 'dist/*',
+                    regexp: true
+                )
+            }
+        }
 
         stage('Docker Image Build and Push') {
             steps {
