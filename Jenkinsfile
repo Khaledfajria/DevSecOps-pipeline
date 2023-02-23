@@ -15,7 +15,7 @@ pipeline {
                         sh 'git pull origin test'
                         sh "pip install -r requirements.txt"
                         sh "/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch"
-                        sh "version=$(grep -o 'current_version = [0-9.]*' .bumpversion | cut -d ' ' -f 3)"
+                        sh "version=\$(grep -o 'current_version = [0-9.]*' .bumpversion | cut -d ' ' -f 3)"
                         echo $version
                         sh 'python3 setup.py sdist'
                         sh "git add . && git commit -m 'Bump version' || true"
