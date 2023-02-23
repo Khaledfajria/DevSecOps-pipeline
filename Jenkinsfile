@@ -12,7 +12,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         echo 'incrementing app version...'
                         sh 'git checkout test'
-                        sh 'git pull origin test'
+                        sh 'git pull'
                         sh 'rm -rf ./dist/'
                         sh 'git config --global user.email "benfajria.khaled11@gmail.com"'
                         sh 'git config --global user.name "Khaled"'
@@ -21,10 +21,9 @@ pipeline {
                         sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
                         sh "pip install setuptools"
                         sh 'python3 setup.py sdist'
-                        sh 'git push origin test'
                         sh 'git add .'
                         sh "git commit -m 'Bump version'"
-                        sh 'git push origin test https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
+                        sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
                         //env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                         //echo "$env.IMAGE_TAG"
                     }
