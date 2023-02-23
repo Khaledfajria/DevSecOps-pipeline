@@ -57,7 +57,12 @@ pipeline {
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
                     credentialsId: 'jenkins-nexus',
-                    artifacts: [ 'dist/*' ]
+                    artifacts: [
+                            [artifactId: 'Django-ecommerce',
+                            classifier: 'package',
+                            file: 'Django-ecommerce-*.tar.gz',
+                            type: 'tar.gz']
+                     ]
                 )
             }
         }
