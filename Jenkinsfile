@@ -37,7 +37,7 @@ pipeline {
                 sh "pip install -r requirements.txt"
                 sh "pip install coverage"
                 //sh "python3 manage.py test"
-                sh '. venv/Script/activate'
+                sh '. venv/Scripts/activate'
                 sh "/var/lib/jenkins/.local/lib/python3.8/site-packages/coverage run --source='.' manage.py test"
                 sh '/var/lib/jenkins/.local/lib/python3.8/site-packages/coverage xml'
                 //junit '**/junit.xml'
