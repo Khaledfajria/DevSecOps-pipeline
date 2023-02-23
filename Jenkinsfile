@@ -16,7 +16,7 @@ pipeline {
                         sh "pip install -r requirements.txt"
                         sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
                         sh 'python3 setup.py sdist'
-                        sh "git add .sh && git commit -m 'Bump version' || true"
+                        sh "git add . && git commit -m 'Bump version' || true"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
                         env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                         echo "$env.IMAGE_TAG"
