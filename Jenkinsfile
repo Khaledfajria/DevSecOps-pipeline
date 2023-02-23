@@ -21,7 +21,7 @@ pipeline {
                         sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
                         sh "pip install setuptools"
                         sh 'python3 setup.py sdist'
-                        sh 'git branch'
+                        sh 'git push origin test'
                         sh 'git add .'
                         sh "git commit -m 'Bump version'"
                         sh 'git push origin test https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
