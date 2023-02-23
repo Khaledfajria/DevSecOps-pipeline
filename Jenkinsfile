@@ -57,7 +57,7 @@ pipeline {
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
                     credentialsId: 'jenkins-nexus',
-                    artifacts: 'dist/*',
+                    artifact: 'dist/*',
                     regexp: true
                 )
             }
