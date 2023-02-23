@@ -13,6 +13,7 @@ pipeline {
                         echo 'incrementing app version...'
                         sh 'git checkout test'
                         sh 'git pull origin test'
+                        sh 'rm -rf /dist/'
                         sh "pip install -r requirements.txt"
                         sh "/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch"
                         version = sh(returnStdout: true, script: "grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3").trim()
