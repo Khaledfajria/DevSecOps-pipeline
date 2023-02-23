@@ -14,12 +14,13 @@ pipeline {
                         sh 'git checkout test'
                         sh 'git pull origin test'
                         sh 'rm -rf ./dist/'
-                        sh "git config --global user.email 'benfajria.khaled11@gmail.com'"
-                        sh "git config --global user.name 'Khaled'"
-                        sh 'pip install bumpversion'
+                        sh "pip install -r requirements.txt"
+                        //sh "git config --global user.email 'benfajria.khaled11@gmail.com'"
+                        //sh "git config --global user.name 'Khaled'"
+                        //sh 'pip install bumpversion'
                         //def version = sh(script: 'cat version.txt', returnStdout: true).trim()
                         sh '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch'
-                        sh "pip install setuptools"
+                        //sh "pip install setuptools"
                         sh 'python3 setup.py sdist'
                         sh 'git add .'
                         sh "git commit -m 'Bump version' || true"
@@ -34,8 +35,8 @@ pipeline {
         stage('Unit Tests') {
             steps {
                 echo 'pass'
-                sh "pip install -r requirements.txt"
-                sh "pip install coverage"
+                //sh "pip install -r requirements.txt"
+                //sh "pip install coverage"
                 //sh "python3 manage.py test"
                 //sh '. venv/Scripts/activate'
                 sh "/var/lib/jenkins/.local/bin/coverage run --source='.' manage.py test"
