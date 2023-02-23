@@ -14,7 +14,7 @@ pipeline {
                         sh 'git checkout test'
                         sh 'git pull origin test'
                         sh "pip install -r requirements.txt"
-                        sh "version=\$(/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch)"
+                        sh "def version = sh(script: '/var/lib/jenkins/.local/bin/bumpversion --allow-dirty patch | cut -d" " -f3', returnStdout: true).trim()"
                         sh 'python3 setup.py sdist'
                         sh "git add . && git commit -m 'Bump version' || true"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
