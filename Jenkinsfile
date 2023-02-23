@@ -12,7 +12,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         echo 'incrementing app version...'
                         sh 'git checkout test'
-                        sh 'git pull'
+                        sh 'git pull origin test'
                         sh 'rm -rf ./dist/'
                         sh "git config --global user.email 'benfajria.khaled11@gmail.com'"
                         sh "git config --global user.name 'Khaled'"
