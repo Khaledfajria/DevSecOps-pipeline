@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='Django-ecommerce',
-    version="1.1.227",
+    version="1.1.228",
     description='Django Ecommerce',
     author='Khaled Benfajria',
     author_email='benfajria.khaled11@gmail.com',
