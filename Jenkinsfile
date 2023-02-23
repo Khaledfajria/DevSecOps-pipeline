@@ -20,7 +20,6 @@ pipeline {
                         sh "git add . && git commit -m 'Bump version' || true"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
                         env.IMAGE_TAG = "$version-$BUILD_NUMBER"
-                        echo "$env.IMAGE_TAG"
                     }
                 }
             }
@@ -51,7 +50,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                //sh 'sudo docker build -t my-django-ecommerce-image:${IMAGE_TAG} .'
+                sh 'sudo docker build -t my-django-ecommerce-image:${IMAGE_TAG} .'
             }
         }
 
