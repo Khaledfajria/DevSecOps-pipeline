@@ -18,8 +18,8 @@ pipeline {
                         sh 'python3 setup.py sdist'
                         sh "git add . && git commit -m 'Bump version' || true"
                         sh 'git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git'
-                        env.IMAGE_TAG = "$version-$BUILD_NUMBER"
-                        echo "$env.IMAGE_TAG"
+                    env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+                    echo "$env.IMAGE_TAG"
                     }
                 }
             }
