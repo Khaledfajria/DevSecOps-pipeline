@@ -6,4 +6,5 @@ recursive-include static_in_env *
 include .env
 include db.sqlite3
 include requirements.txt
-include version.txt
+include .bumpversion.cfg
+include setup.py
