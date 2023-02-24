@@ -5,6 +5,8 @@ pipeline {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
        BUMPVERSION = "/var/lib/jenkins/.local/bin/bumpversion"
        COVERAGE    = "/var/lib/jenkins/.local/bin/coverage"
+       DOCKER_REGISTRY = "http://20.163.172.235:8081"
+       DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
     stages {
@@ -58,7 +60,7 @@ pipeline {
                     groupId: 'zed',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
-                    credentialsId: 'jenkins-nexus',
+                    credentialsId: 'NEXUS-CRED',
                     artifacts: [
                             [artifactId: 'Django-ecommerce',
                             classifier: 'file',
@@ -69,10 +71,15 @@ pipeline {
             }
         }
 
-        stage('Docker Image Build and Push') {
+        stage('Build & Push Docker image to Nexus') {
             steps {
-                echo "pass"
-                sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
+                script {
+                  docker.withRegistry("${DOCKER_REGISTRY}", "docker") {
+                    sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
+                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} ${DOCKER_REGISTRY}/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker push ${DOCKER_REGISTRY}/my-django-ecommerce-image:${IMAGE_TAG}"
+                  }
+                }
             }
         }
 
