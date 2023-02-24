@@ -5,7 +5,7 @@ pipeline {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
        BUMPVERSION = "/var/lib/jenkins/.local/bin/bumpversion"
        COVERAGE    = "/var/lib/jenkins/.local/bin/coverage"
-       DOCKER_REGISTRY = "http://20.163.172.235:8081/repository/docker/"
+       DOCKER_REGISTRY = "http://52.249.250.21:8081/repository/docker/"
        DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
@@ -56,7 +56,7 @@ pipeline {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '20.163.172.235:8081/repository/Djecommerce-artifact/',
+                    nexusUrl: '52.249.250.21:8081/repository/Djecommerce-artifact/',
                     groupId: 'zed',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
