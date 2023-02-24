@@ -54,8 +54,8 @@ pipeline {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '172.174.163.230:8081/repository/Djecommerce-artifact/',
-                    groupId: 'zed.com',
+                    nexusUrl: '20.163.172.235:8081/repository/Djecommerce-artifact/',
+                    groupId: 'zed',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
                     credentialsId: 'jenkins-nexus',
