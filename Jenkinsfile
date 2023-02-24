@@ -61,7 +61,7 @@ pipeline {
                     credentialsId: 'jenkins-nexus',
                     artifacts: [
                             [artifactId: 'Django-ecommerce',
-                            classifier: 'file',
+                            classifier: 'package',
                             file: 'dist/Django-ecommerce-'+version+'.tar.gz',
                             type: 'tar.gz']
                      ]
