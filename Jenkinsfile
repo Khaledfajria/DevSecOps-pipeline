@@ -13,10 +13,8 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
                         sh "git checkout test"
                         sh "git pull origin test"
-                    }
                 }
             }
         }
