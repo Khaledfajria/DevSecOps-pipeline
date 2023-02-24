@@ -5,7 +5,7 @@ pipeline {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
        BUMPVERSION = "/var/lib/jenkins/.local/bin/bumpversion"
        COVERAGE    = "/var/lib/jenkins/.local/bin/coverage"
-       DOCKER_REGISTRY = "52.249.250.21:8070/repository/docker"
+       DOCKER_REGISTRY = "http://52.249.250.21:8070/repository/docker"
        DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
@@ -76,7 +76,7 @@ pipeline {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
                     sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
-                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} ${DOCKER_REGISTRY}/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                     sh "sudo docker push ${DOCKER_REGISTRY}/my-django-ecommerce-image:${IMAGE_TAG}"
                   }
                 }
