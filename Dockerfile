@@ -17,7 +17,7 @@ RUN pwd && ls
 # COPY dist/Django-ecommerce-*.tar.gz /app/
 
 # Extract the source distribution archive and install the package
-RUN tar -xzf tar -xzf Django-ecommerce-*.tar.gz --strip-components=1 && \
+RUN tar -xzf Django-ecommerce-*.tar.gz --strip-components=1 && \
     pip install .
 
 # Run the command to start the Django development server
