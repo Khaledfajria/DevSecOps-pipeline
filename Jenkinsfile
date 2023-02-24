@@ -10,21 +10,34 @@ pipeline {
     }
 
     stages {
+        stage('Checkout Code') {
+            steps {
+                script {
+                    git checkout 'test'
+                    git pull origin test
+                }
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('increment version') {
+            echo "incrementing app version..."
+            sh "$BUMPVERSION --allow-dirty patch"
+            version = sh(returnStdout: true, script: "grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3").trim()
+            env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+        }
         stage('Build Artifact') {
             steps {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                        echo "incrementing app version..."
-                        sh "git checkout test"
-                        sh "git pull origin test"
                         sh "rm -rf ./dist/"
-                        sh "pip install -r requirements.txt"
-                        sh "$BUMPVERSION --allow-dirty patch"
-                        version = sh(returnStdout: true, script: "grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3").trim()
                         sh "python3 setup.py sdist"
                         sh "git add . && git commit -m 'Bump version' || true"
                         sh "git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git"
-                        env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+
                     }
                 }
             }
@@ -51,7 +64,7 @@ pipeline {
                 //}
             }
         }
-        stage('Publish to Nexus') {
+        stage('Publish Artifact to Nexus') {
             steps {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
@@ -76,8 +89,8 @@ pipeline {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
                     sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
-                    //sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-                    sh "sudo docker push my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker push 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                   }
                 }
             }
