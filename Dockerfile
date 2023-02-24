@@ -1,11 +1,16 @@
 # Use an official Python runtime as the base image
 FROM python:3.8-alpine
 
+# Set up environment variables
+ENV NEXUS_URL=http://172.174.163.230:8081/repository
+
 # Set the working directory in the container
 WORKDIR /app
 
+# Retrieve the zip file from Nexus
+ADD $NEXUS_URL/Djecommerce-artifact/Django-ecommerce-*.tar.gz /app/
 # Copy the source distribution archive to the container
-COPY dist/Django-ecommerce-*.tar.gz /app/
+# COPY dist/Django-ecommerce-*.tar.gz /app/
 
 # Extract the source distribution archive and install the package
 RUN tar -xzf tar -xzf Django-ecommerce-*.tar.gz --strip-components=1 && \
