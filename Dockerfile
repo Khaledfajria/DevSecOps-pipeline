@@ -6,9 +6,9 @@ ENV NEXUS_URL=http://172.174.163.230:8081/repository
 
 # Set the working directory in the container
 WORKDIR /app
-
+ADD http://172.174.163.230:8081/service/rest/repository/browse/Djecommerce-artifact/repository/Djecommerce-artifact/zed/com/Django-ecommerce/*/Django-ecommerce-*.tar.gz /app/
 # Retrieve the zip file from Nexus
-ADD $NEXUS_URL/Djecommerce-artifact/Django-ecommerce-*.tar.gz /app/
+# ADD $NEXUS_URL/Djecommerce-artifact/Django-ecommerce-*.tar.gz /app/
 # Copy the source distribution archive to the container
 # COPY dist/Django-ecommerce-*.tar.gz /app/
 
