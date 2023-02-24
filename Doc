@@ -33,3 +33,9 @@ sudo curl --create-dirs -sSLo $HOME/.sonar/sonar-scanner.zip https://binaries.so
 sudo unzip -o $HOME/.sonar/sonar-scanner.zip -d $HOME/.sonar/
 export PATH=$SONAR_SCANNER_HOME/bin:$PATH
 export SONAR_SCANNER_OPTS="-server"
+
+cat /etc/docker/daemon.json
+{
+  "insecure-registries": ["http://52.249.250.21:8070"]
+}
+
