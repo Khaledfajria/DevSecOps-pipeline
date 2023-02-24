@@ -26,7 +26,7 @@
 # -------------------------------------------------------------------------------
 FROM python:3.8-alpine
 
-ENV NEXUS_URL=http://172.174.163.230:8081/repository
+ENV NEXUS_URL=http://20.163.172.235:8081/repository
 ENV REPO_NAME=Djecommerce-artifact
 ENV GROUP_ID=zed
 ENV ARTIFACT_ID=Django-ecommerce
