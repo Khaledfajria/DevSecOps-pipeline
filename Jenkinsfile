@@ -85,7 +85,7 @@ pipeline {
 
         stage('Kubernetes Deployment') {
             steps {
-                echo "pass"
+                echo "passs"
                 //Install k8s-cli plugin
                 //withKubeConfig([credentialsId: 'kubeconfig']) {
                    // sh "sed -i 's#replace-image#my-django-ecommerce-image:$BUILD_NUMBER#g' DJ-ecommerce-deploy.yaml"
