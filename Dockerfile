@@ -6,6 +6,7 @@ ENV NEXUS_URL=http://172.174.163.230:8081/repository
 
 # Set the working directory in the container
 WORKDIR /app
+RUN apk --no-cache add curl
 # ADD http://172.174.163.230:8081/repository/Djecommerce-artifact/repository/Djecommerce-artifact/zed/com/Django-ecommerce/1.1.256/Django-ecommerce-1.1.256-package.tar.gz /app/
 # Retrieve the zip file from Nexus
 RUN curl -O http://172.174.163.230:8081/repository/Djecommerce-artifact/zed/com/Django-ecommerce/1.1.256/Django-ecommerce-1.1.256-package.tar.gz
