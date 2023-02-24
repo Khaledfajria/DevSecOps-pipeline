@@ -40,7 +40,7 @@ pipeline {
                         sh "rm -rf ./dist/"
                         sh "python3 setup.py sdist"
                         sh "git add . && git commit -m 'Bump version' || true"
-                        sh "git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DJ-ECO.git"
+                        sh "git push https://${GIT_USER}:${GIT_PASS}@github.com/KhaledBenfajria/DevSecOps-pipeline.git"
 
                     }
                 }
@@ -49,14 +49,9 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                echo "passs"
-                //sh "pip install -r requirements.txt"
-                //sh "pip install coverage"
-                //sh "python3 manage.py test"
-                //sh '. venv/Scripts/activate'
                 sh "$COVERAGE run --source='.' manage.py test"
                 sh "$COVERAGE xml"
-                //junit '**/junit.xml'
+
             }
         }
 
