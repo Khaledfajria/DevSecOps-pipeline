@@ -10,7 +10,7 @@ RUN apk --no-cache add curl
 # ADD http://172.174.163.230:8081/repository/Djecommerce-artifact/repository/Djecommerce-artifact/zed/com/Django-ecommerce/1.1.256/Django-ecommerce-1.1.256-package.tar.gz /app/
 # Retrieve the zip file from Nexus
 RUN mkdir app
-RUN wget http://css:css@172.174.163.230:8081/repository/Djecommerce-artifact/repository/Djecommerce-artifact/zed/com/Django-ecommerce/1.1.271/Django-ecommerce-1.1.271-file.tar.gz
+RUN wget http://css:css@172.174.163.230:8081/repository/Djecommerce-artifact/repository/Djecommerce-artifact/zed/com/Django-ecommerce/1.1.276/Django-ecommerce-1.1.276-file.tar.gz
 RUN pwd && ls
 # ADD $NEXUS_URL/Djecommerce-artifact/Django-ecommerce-*.tar.gz /app/
 # Copy the source distribution archive to the container
