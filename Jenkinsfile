@@ -24,10 +24,12 @@ pipeline {
             }
         }
         stage('increment version') {
-            echo "incrementing app version..."
-            sh "$BUMPVERSION --allow-dirty patch"
-            version = sh(returnStdout: true, script: "grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3").trim()
-            env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+            steps {
+                echo "incrementing app version..."
+                sh "$BUMPVERSION --allow-dirty patch"
+                version = sh(returnStdout: true, script: "grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3").trim()
+                env.IMAGE_TAG = "$version-$BUILD_NUMBER"
+            }
         }
         stage('Build Artifact') {
             steps {
