@@ -72,7 +72,7 @@ pipeline {
         stage('Docker Image Build and Push') {
             steps {
                 echo "pass"
-                sh "sudo docker build -t my-django-ecommerce-image:${IMAGE_TAG} ."
+                sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
             }
         }
 
