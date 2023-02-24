@@ -63,7 +63,7 @@ pipeline {
                             [artifactId: 'Django-ecommerce',
                             classifier: 'package',
                             file: 'dist/Django-ecommerce-'+version+'.tar.gz',
-                            type: 'tar.gz']
+                            type: '']
                      ]
                 )
             }
