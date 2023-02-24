@@ -14,15 +14,15 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'GIT_CRED', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                        git checkout 'test'
-                        git pull origin test
+                        sh "git checkout test"
+                        sh "git pull origin test"
                     }
                 }
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh "pip install -r requirements.txt"
             }
         }
         stage('increment version') {
