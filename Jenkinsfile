@@ -13,8 +13,8 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 script {
-                        sh "git checkout test"
-                        sh "git pull origin test"
+                    sh "git checkout test"
+                    sh "git pull origin test"
                 }
             }
         }
