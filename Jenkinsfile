@@ -63,6 +63,7 @@ pipeline {
                always {
                   // Publish HTML report
                   publishHTML([
+                      allowMissing: true,
                       keepAll: true,
                       alwaysLinkToLastBuild: true,
                       reportDir: 'safety',
