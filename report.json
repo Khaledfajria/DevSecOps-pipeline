@@ -1,0 +1,875 @@
+{
+    "report_meta": {
+        "scan_target": "files",
+        "scanned": [
+            "requirements.txt"
+        ],
+        "policy_file": null,
+        "policy_file_source": "local",
+        "api_key": false,
+        "local_database_path": null,
+        "safety_version": "2.3.5",
+        "timestamp": "2023-02-28 14:23:41",
+        "packages_found": 25,
+        "vulnerabilities_found": 27,
+        "vulnerabilities_ignored": 0,
+        "remediations_recommended": 0,
+        "telemetry": {
+            "os_type": "Linux",
+            "os_release": "5.4.0-1100-gcp",
+            "os_description": "Linux-5.4.0-1100-gcp-x86_64-with-glibc2.29",
+            "python_version": "3.8.10",
+            "safety_command": "check",
+            "safety_options": {
+                "files": {
+                    "-r": 1
+                },
+                "output": {
+                    "--output": 1
+                }
+            },
+            "safety_version": "2.3.5",
+            "safety_source": "cli"
+        },
+        "git": {
+            "branch": "test",
+            "tag": "1.1.316",
+            "commit": "5b16270f54fe70257df5365f8e3ef61c087375b5",
+            "dirty": true,
+            "origin": "https://github.com/KhaledBenfajria/DevSecOps-pipeline.git"
+        },
+        "project": null,
+        "json_version": 1
+    },
+    "scanned_packages": {
+        "autopep8": {
+            "name": "autopep8",
+            "version": "1.4.4"
+        },
+        "certifi": {
+            "name": "certifi",
+            "version": "2019.3.9"
+        },
+        "chardet": {
+            "name": "chardet",
+            "version": "3.0.4"
+        },
+        "defusedxml": {
+            "name": "defusedxml",
+            "version": "0.6.0"
+        },
+        "Django": {
+            "name": "Django",
+            "version": "2.2.14"
+        },
+        "django-allauth": {
+            "name": "django-allauth",
+            "version": "0.39.1"
+        },
+        "django-countries": {
+            "name": "django-countries",
+            "version": "5.3.3"
+        },
+        "django-crispy-forms": {
+            "name": "django-crispy-forms",
+            "version": "1.7.2"
+        },
+        "django-debug-toolbar": {
+            "name": "django-debug-toolbar",
+            "version": "1.10.1"
+        },
+        "idna": {
+            "name": "idna",
+            "version": "2.8"
+        },
+        "oauthlib": {
+            "name": "oauthlib",
+            "version": "3.0.1"
+        },
+        "pep8": {
+            "name": "pep8",
+            "version": "1.7.1"
+        },
+        "Pillow": {
+            "name": "Pillow",
+            "version": "9.4.0"
+        },
+        "pycodestyle": {
+            "name": "pycodestyle",
+            "version": "2.5.0"
+        },
+        "python-decouple": {
+            "name": "python-decouple",
+            "version": "3.1"
+        },
+        "python3-openid": {
+            "name": "python3-openid",
+            "version": "3.1.0"
+        },
+        "pytz": {
+            "name": "pytz",
+            "version": "2018.5"
+        },
+        "requests": {
+            "name": "requests",
+            "version": "2.21.0"
+        },
+        "requests-oauthlib": {
+            "name": "requests-oauthlib",
+            "version": "1.2.0"
+        },
+        "sqlparse": {
+            "name": "sqlparse",
+            "version": "0.2.4"
+        },
+        "stripe": {
+            "name": "stripe",
+            "version": "2.27.0"
+        },
+        "urllib3": {
+            "name": "urllib3",
+            "version": "1.24.2"
+        },
+        "coverage": {
+            "name": "coverage",
+            "version": "7.1.0"
+        },
+        "bumpversion": {
+            "name": "bumpversion",
+            "version": "0.6.0"
+        },
+        "safety": {
+            "name": "safety",
+            "version": "2.3.5"
+        }
+    },
+    "affected_packages": {
+        "certifi": {
+            "name": "certifi",
+            "version": "2019.3.9",
+            "found": "requirements.txt",
+            "insecure_versions": [],
+            "secure_versions": [],
+            "latest_version_without_known_vulnerabilities": null,
+            "latest_version": null,
+            "more_info_url": "https://pyup.io"
+        },
+        "Django": {
+            "name": "Django",
+            "version": "2.2.14",
+            "found": "requirements.txt",
+            "insecure_versions": [],
+            "secure_versions": [],
+            "latest_version_without_known_vulnerabilities": null,
+            "latest_version": null,
+            "more_info_url": "https://pyup.io"
+        },
+        "django-allauth": {
+            "name": "django-allauth",
+            "version": "0.39.1",
+            "found": "requirements.txt",
+            "insecure_versions": [],
+            "secure_versions": [],
+            "latest_version_without_known_vulnerabilities": null,
+            "latest_version": null,
+            "more_info_url": "https://pyup.io"
+        },
+        "django-debug-toolbar": {
+            "name": "django-debug-toolbar",
+            "version": "1.10.1",
+            "found": "requirements.txt",
+            "insecure_versions": [],
+            "secure_versions": [],
+            "latest_version_without_known_vulnerabilities": null,
+            "latest_version": null,
+            "more_info_url": "https://pyup.io"
+        },
+        "urllib3": {
+            "name": "urllib3",
+            "version": "1.24.2",
+            "found": "requirements.txt",
+            "insecure_versions": [],
+            "secure_versions": [],
+            "latest_version_without_known_vulnerabilities": null,
+            "latest_version": null,
+            "more_info_url": "https://pyup.io"
+        }
+    },
+    "announcements": [],
+    "vulnerabilities": [
+        {
+            "vulnerability_id": "52365",
+            "package_name": "certifi",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2022.12.07",
+            "all_vulnerable_specs": [
+                "<2022.12.07"
+            ],
+            "analyzed_version": "2019.3.9",
+            "advisory": "Certifi 2022.12.07 includes a fix for CVE-2022-23491: Certifi 2022.12.07 removes root certificates from \"TrustCor\" from the root store. These are in the process of being removed from Mozilla's trust store. TrustCor's root certificates are being removed pursuant to an investigation prompted by media reporting that TrustCor's ownership also operated a business that produced spyware. Conclusions of Mozilla's investigation can be found in the linked google group discussion.\r\nhttps://github.com/certifi/python-certifi/security/advisories/GHSA-43fp-rhv2-5gv8\r\nhttps://groups.google.com/a/mozilla.org/g/dev-security-policy/c/oxX69KFvsm4/m/yLohoVqtCgAJ",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-23491",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/52365/f17"
+        },
+        {
+            "vulnerability_id": "44741",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.27",
+            "all_vulnerable_specs": [
+                "<2.2.27",
+                ">=3.0a1,<3.2.12",
+                ">=4.0a1,<4.0.2"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "An issue was discovered in MultiPartParser in Django 2.2 before 2.2.27, 3.2 before 3.2.12, and 4.0 before 4.0.2. Passing certain inputs to multipart forms could result in an infinite loop when parsing files.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-23833",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/44741/f17"
+        },
+        {
+            "vulnerability_id": "44742",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.27",
+            "all_vulnerable_specs": [
+                "<2.2.27",
+                ">=3.0a1,<3.2.12",
+                ">=4.0a1,<4.0.2"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "The {% debug %} template tag in Django 2.2 before 2.2.27, 3.2 before 3.2.12, and 4.0 before 4.0.2 does not properly encode the current context. This may lead to XSS.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-22818",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/44742/f17"
+        },
+        {
+            "vulnerability_id": "49733",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<3.2.14",
+            "all_vulnerable_specs": [
+                "<3.2.14",
+                ">=4.0a1,<4.0.6"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 3.2.14 and 4.0.6 include a fix for CVE-2022-34265: Potential SQL injection via Trunc(kind) and Extract(lookup_name) arguments.\r\nhttps://www.djangoproject.com/weblog/2022/jul/04/security-releases",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-34265",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/49733/f17"
+        },
+        {
+            "vulnerability_id": "38752",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.16",
+            "all_vulnerable_specs": [
+                "<2.2.16",
+                ">=3.0a1,<3.0.10",
+                ">=3.1a1,<3.1.1"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "An issue was discovered in Django 2.2 before 2.2.16, 3.0 before 3.0.10, and 3.1 before 3.1.1 (when Python 3.7+ is used). The intermediate-level directories of the filesystem cache had the system's standard umask rather than 0o077.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2020-24584",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/38752/f17"
+        },
+        {
+            "vulnerability_id": "38749",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.16",
+            "all_vulnerable_specs": [
+                "<2.2.16",
+                ">=3.0a1,<3.0.10",
+                ">=3.1a1,<3.1.1"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "An issue was discovered in Django 2.2 before 2.2.16, 3.0 before 3.0.10, and 3.1 before 3.1.1 (when Python 3.7+ is used). FILE_UPLOAD_DIRECTORY_PERMISSIONS mode was not applied to intermediate-level directories created in the process of uploading files. It was also not applied to intermediate-level collected static directories when using the collectstatic management command.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2020-24583",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/38749/f17"
+        },
+        {
+            "vulnerability_id": "51340",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<3.2.16",
+            "all_vulnerable_specs": [
+                "<3.2.16",
+                ">=4.0a1,<4.0.8",
+                ">=4.1a1,<4.1.2"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "In Django 3.2 before 3.2.16, 4.0 before 4.0.8, and 4.1 before 4.1.2, internationalized URLs were subject to a potential denial of service attack via the locale parameter, which is treated as a regular expression.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-41323",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/51340/f17"
+        },
+        {
+            "vulnerability_id": "39521",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.0a1,<2.2.18",
+            "all_vulnerable_specs": [
+                ">=2.0a1,<2.2.18",
+                ">=3.0a1,<3.0.12",
+                ">=3.1a1,<3.1.6"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.18, 3.0.12 and 3.1.6 include a fix for CVE-2021-3281: The django.utils.archive.extract method (used by \"startapp --template\" and \"startproject --template\") allows directory traversal via an archive with absolute paths or relative paths with dot segments.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-3281",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/39521/f17"
+        },
+        {
+            "vulnerability_id": "40404",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.2a1,<2.2.21",
+            "all_vulnerable_specs": [
+                ">=3.1a1,<3.1.9",
+                ">=2.2a1,<2.2.21",
+                ">=3.2a1,<3.2.1"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "In Django 2.2 before 2.2.21, 3.1 before 3.1.9, and 3.2 before 3.2.1, MultiPartParser, UploadedFile, and FieldFile allowed directory traversal via uploaded files with suitably crafted file names.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-31542",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/40404/f17"
+        },
+        {
+            "vulnerability_id": "39646",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.2a1,<2.2.19",
+            "all_vulnerable_specs": [
+                ">=2.2a1,<2.2.19",
+                ">=3.0a1,<3.0.13",
+                ">=3.1a1,<3.1.7"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django versions 2.2.19, 3.0.13 and 3.1.7 include a fix for CVE-2021-23336, a Web Cache Poisoning vulnerability in Python's urllib.parse.",
+            "is_transitive": true,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-23336",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/39646/f17"
+        },
+        {
+            "vulnerability_id": "40638",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.2.0a1,<2.2.24",
+            "all_vulnerable_specs": [
+                ">=2.2.0a1,<2.2.24",
+                ">=3.0.0a1,<3.1.12",
+                ">=3.2.0a1,<3.2.4"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.24, 3.1.12, and 3.2.4 includes a fix for CVE-2021-33571: In Django 2.2 before 2.2.24, 3.x before 3.1.12, and 3.2 before 3.2.4, URLValidator, validate_ipv4_address, and validate_ipv46_address do not prohibit leading zero characters in octal literals. This may allow a bypass of access control that is based on IP addresses. (validate_ipv4_address and validate_ipv46_address are unaffected with Python 3.9.5+).\r\nhttps://www.djangoproject.com/weblog/2021/jun/02/security-releases/",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-33571",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/40638/f17"
+        },
+        {
+            "vulnerability_id": "39526",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.2a1,<2.2.18",
+            "all_vulnerable_specs": [
+                ">=2.2a1,<2.2.18",
+                ">=3.1a1,<3.1.6",
+                ">=3.0a1,<3.0.12"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "In Django 2.2 before 2.2.18, 3.0 before 3.0.12, and 3.1 before 3.1.6, the django.utils.archive.extract method (used by \"startapp --template\" and \"startproject --template\") allows directory traversal via an archive with absolute paths or relative paths with dot segments. See CVE-2021-3281.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-3281",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/39526/f17"
+        },
+        {
+            "vulnerability_id": "40163",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.2a1,<2.2.20",
+            "all_vulnerable_specs": [
+                ">=2.2a1,<2.2.20",
+                ">=3.0a1,<3.0.14",
+                ">=3.1a1,<3.1.8"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "In Django 2.2 before 2.2.20, 3.0 before 3.0.14, and 3.1 before 3.1.8, MultiPartParser allowed directory traversal via uploaded files with suitably crafted file names. Built-in upload handlers were not affected by this vulnerability.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-28658",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/40163/f17"
+        },
+        {
+            "vulnerability_id": "40414",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": ">=2.2a1,<2.2.22",
+            "all_vulnerable_specs": [
+                ">=3.1a1,<3.1.10",
+                ">=2.2a1,<2.2.22",
+                ">=3.2a1,<3.2.2"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django versions 3.2.2, 3.1.10 and 2.2.22 include a fix for CVE-2021-32052: In Django 2.2 before 2.2.22, 3.1 before 3.1.10, and 3.2 before 3.2.2 (with Python 3.9.5+), URLValidator does not prohibit newlines and tabs (unless the URLField form field is used). If an application uses values with newlines in an HTTP response, header injection can occur. Django itself is unaffected because HttpResponse prohibits newlines in HTTP headers.\r\nhttps://www.djangoproject.com/weblog/2021/may/06/security-releases",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-32052",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/40414/f17"
+        },
+        {
+            "vulnerability_id": "40637",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.24",
+            "all_vulnerable_specs": [
+                "<2.2.24",
+                ">=3.0a1,<3.1.12",
+                ">=3.2a1,<3.2.4"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django before 2.2.24, 3.x before 3.1.12, and 3.2.x before 3.2.4 has a potential directory traversal via django.contrib.admindocs. Staff members could use the TemplateDetailView view to check the existence of arbitrary files. Additionally, if (and only if) the default admindocs templates have been customized by application developers to also show file contents, then not only the existence but also the file contents would have been exposed. In other words, there is directory traversal outside of the template root directories.\r\nhttps://www.djangoproject.com/weblog/2021/jun/02/security-releases",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-33203",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/40637/f17"
+        },
+        {
+            "vulnerability_id": "50454",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<3.2.15",
+            "all_vulnerable_specs": [
+                "<3.2.15",
+                ">=4.0a1,<4.0.7"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 3.2.15 and 4.0.7 include a fix for CVE-2022-36359: An issue was discovered in the HTTP FileResponse class in Django 3.2 before 3.2.15 and 4.0 before 4.0.7. An application is vulnerable to a reflected file download (RFD) attack that sets the Content-Disposition header of a FileResponse when the filename is derived from user-supplied input.\r\nhttps://www.djangoproject.com/weblog/2022/aug/03/security-releases",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-36359",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/50454/f17"
+        },
+        {
+            "vulnerability_id": "44426",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.26",
+            "all_vulnerable_specs": [
+                "<2.2.26",
+                ">=3.0a1,<3.2.11",
+                ">=4.0a1,<4.0.1"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.26, 3.2.11 and 4.0.1 include a fix for CVE-2021-45452: Storage.save in Django 2.2 before 2.2.26, 3.2 before 3.2.11, and 4.0 before 4.0.1 allows directory traversal if crafted filenames are directly passed to it.\r\nhttps://www.djangoproject.com/weblog/2022/jan/04/security-releases/",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-45452",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/44426/f17"
+        },
+        {
+            "vulnerability_id": "44427",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.26",
+            "all_vulnerable_specs": [
+                "<2.2.26",
+                ">=3.0a1,<3.2.11",
+                ">=4.0a1,<4.0.1"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.26, 3.2.11 and 4.0.1 include a fix for CVE-2021-45116: An issue was discovered in Django 2.2 before 2.2.26, 3.2 before 3.2.11, and 4.0 before 4.0.1. Due to leveraging the Django Template Language's variable resolution logic, the dictsort template filter was potentially vulnerable to information disclosure, or an unintended method call, if passed a suitably crafted key.\r\nhttps://www.djangoproject.com/weblog/2022/jan/04/security-releases/",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-45116",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/44427/f17"
+        },
+        {
+            "vulnerability_id": "44423",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.26",
+            "all_vulnerable_specs": [
+                "<2.2.26",
+                ">=3.0a1,<3.2.11",
+                ">=4.0a1,<4.0.1"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.26, 3.2.11 and 4.0.1 include a fix for CVE-2021-45115: UserAttributeSimilarityValidator incurred significant overhead in evaluating a submitted password that was artificially large in relation to the comparison values. In a situation where access to user registration was unrestricted, this provided a potential vector for a denial-of-service attack.\r\nhttps://www.djangoproject.com/weblog/2022/jan/04/security-releases/",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-45115",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/44423/f17"
+        },
+        {
+            "vulnerability_id": "43041",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.25",
+            "all_vulnerable_specs": [
+                "<2.2.25",
+                ">=3.2a1,<3.2.10",
+                ">=3.1a1,<3.1.14"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django versions 2.2.25, 3.1.14 and 3.2.10 include a fix for CVE-2021-44420: In Django 2.2 before 2.2.25, 3.1 before 3.1.14, and 3.2 before 3.2.10, HTTP requests for URLs with trailing newlines could bypass upstream access control based on URL paths.\r\nhttps://www.djangoproject.com/weblog/2021/dec/07/security-releases/",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-44420",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/43041/f17"
+        },
+        {
+            "vulnerability_id": "48040",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.28",
+            "all_vulnerable_specs": [
+                "<2.2.28",
+                ">=3.0a1,<3.2.13",
+                ">=4.0a1,<4.0.4"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.28, 3.2.13 and 4.0.4 include a fix for CVE-2022-28347: A SQL injection issue was discovered in QuerySet.explain() in Django 2.2 before 2.2.28, 3.2 before 3.2.13, and 4.0 before 4.0.4. This occurs by passing a crafted dictionary (with dictionary expansion) as the **options argument, and placing the injection payload in an option name.\r\nhttps://www.djangoproject.com/weblog/2022/apr/11/security-releases",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-28347",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/48040/f17"
+        },
+        {
+            "vulnerability_id": "48041",
+            "package_name": "django",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<2.2.28",
+            "all_vulnerable_specs": [
+                "<2.2.28",
+                ">=3.0a1,<3.2.13",
+                ">=4.0a1,<4.0.4"
+            ],
+            "analyzed_version": "2.2.14",
+            "advisory": "Django 2.2.28, 3.2.13 and 4.0.4 include a fix for CVE-2022-28346: An issue was discovered in Django 2.2 before 2.2.28, 3.2 before 3.2.13, and 4.0 before 4.0.4. QuerySet.annotate(), aggregate(), and extra() methods are subject to SQL injection in column aliases via a crafted dictionary (with dictionary expansion) as the passed **kwargs.\r\nhttps://www.djangoproject.com/weblog/2022/apr/11/security-releases/",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2022-28346",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/48041/f17"
+        },
+        {
+            "vulnerability_id": "43274",
+            "package_name": "django-allauth",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<0.47.0",
+            "all_vulnerable_specs": [
+                "<0.47.0"
+            ],
+            "analyzed_version": "0.39.1",
+            "advisory": "Django-allauth 0.47.0 adds a new setting 'SOCIALACCOUNT_LOGIN_ON_GET' that controls whether or not the endpoints for initiating a social login (for example, \"/accounts/google/login/\") require a POST request to initiate the handshake. As requiring a POST is more secure, the default of this new setting is 'False'. This is useful to prevent redirect attacks.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": null,
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/43274/f17"
+        },
+        {
+            "vulnerability_id": "37664",
+            "package_name": "django-allauth",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<0.41.0",
+            "all_vulnerable_specs": [
+                "<0.41.0"
+            ],
+            "analyzed_version": "0.39.1",
+            "advisory": "Django-allauth 0.41.0 conforms to the general Django 3.0.1, 2.2.9, and 1.11.27 security release. See CVE-2019-19844 and <https://www.djangoproject.com/weblog/2019/dec/18/security-releases/>.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2019-19844",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/37664/f17"
+        },
+        {
+            "vulnerability_id": "40207",
+            "package_name": "django-debug-toolbar",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<1.11.1",
+            "all_vulnerable_specs": [
+                "<1.11.1",
+                ">2,<2.2.1",
+                ">3,<3.2.1"
+            ],
+            "analyzed_version": "1.10.1",
+            "advisory": "A SQL Injection issue in the SQL Panel in Jazzband Django Debug Toolbar before 1.11.1, 2.x before 2.2.1, and 3.x before 3.2.1 allows attackers to execute SQL statements by changing the raw_sql input field of the SQL explain, analyze, or select form. See CVE-2021-30459.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-30459",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/40207/f17"
+        },
+        {
+            "vulnerability_id": "38834",
+            "package_name": "urllib3",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<1.25.9",
+            "all_vulnerable_specs": [
+                "<1.25.9"
+            ],
+            "analyzed_version": "1.24.2",
+            "advisory": "Urllib3 1.25.9 includes a fix for CVE-2020-26137: Urllib3 before 1.25.9 allows CRLF injection if the attacker controls the HTTP request method, as demonstrated by inserting CR and LF control characters in the first argument of putrequest(). NOTE: this is similar to CVE-2020-26116.\r\nhttps://github.com/python/cpython/issues/83784",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2020-26137",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/38834/f17"
+        },
+        {
+            "vulnerability_id": "43975",
+            "package_name": "urllib3",
+            "ignored": {},
+            "ignored_reason": null,
+            "ignored_expires": null,
+            "vulnerable_spec": "<1.26.5",
+            "all_vulnerable_specs": [
+                "<1.26.5"
+            ],
+            "analyzed_version": "1.24.2",
+            "advisory": "Urllib3 1.26.5 includes a fix for CVE-2021-33503: When provided with a URL containing many @ characters in the authority component, the authority regular expression exhibits catastrophic backtracking, causing a denial of service if a URL were passed as a parameter or redirected to via an HTTP redirect.",
+            "is_transitive": false,
+            "published_date": null,
+            "fixed_versions": [],
+            "closest_versions_without_known_vulnerabilities": [],
+            "resources": [],
+            "CVE": "CVE-2021-33503",
+            "severity": null,
+            "affected_versions": [],
+            "more_info_url": "https://pyup.io/v/43975/f17"
+        }
+    ],
+    "ignored_vulnerabilities": [],
+    "remediations": {
+        "certifi": {
+            "current_version": "2019.3.9",
+            "vulnerabilities_found": 1,
+            "recommended_version": null,
+            "other_recommended_versions": [],
+            "more_info_url": "https://pyup.io/?from=2019.3.9"
+        },
+        "django": {
+            "current_version": "2.2.14",
+            "vulnerabilities_found": 21,
+            "recommended_version": null,
+            "other_recommended_versions": [],
+            "more_info_url": "https://pyup.io/?from=2.2.14"
+        },
+        "django-allauth": {
+            "current_version": "0.39.1",
+            "vulnerabilities_found": 2,
+            "recommended_version": null,
+            "other_recommended_versions": [],
+            "more_info_url": "https://pyup.io/?from=0.39.1"
+        },
+        "django-debug-toolbar": {
+            "current_version": "1.10.1",
+            "vulnerabilities_found": 1,
+            "recommended_version": null,
+            "other_recommended_versions": [],
+            "more_info_url": "https://pyup.io/?from=1.10.1"
+        },
+        "urllib3": {
+            "current_version": "1.24.2",
+            "vulnerabilities_found": 2,
+            "recommended_version": null,
+            "other_recommended_versions": [],
+            "more_info_url": "https://pyup.io/?from=1.24.2"
+        }
+    }
+}
