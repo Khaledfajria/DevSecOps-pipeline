@@ -61,7 +61,7 @@ pipeline {
             }
             post {
                always {
-                    dependencyCheckPublish pattern: 'dist/report.html'
+                    dependencyCheckPublisher pattern: 'dist/report.html'
                }
             }
         }
