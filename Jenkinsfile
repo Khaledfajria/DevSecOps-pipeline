@@ -5,8 +5,8 @@ pipeline {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
        BUMPVERSION = "/var/lib/jenkins/.local/bin/bumpversion"
        COVERAGE    = "/var/lib/jenkins/.local/bin/coverage"
-       DOCKER_REGISTRY = "http://52.249.250.21:8070/repository/docker"
-       DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
+       //DOCKER_REGISTRY = "http://52.249.250.21:8070/repository/docker"
+       //DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
     stages {
