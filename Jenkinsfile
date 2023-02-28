@@ -55,55 +55,62 @@ pipeline {
             }
         }
 
-        stage('SonarQube') {
-            steps {
-                //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
-                    echo "pass"
-                    //sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-a5233b190e794c6b.labs.kodekloud.com -Dsonar.login=sqp_cfe7a72544e6f2bb7e46af34e32dce874e219e9e"
-                //}
-            }
-        }
-        stage('Publish Artifact to Nexus') {
-            steps {
-                nexusArtifactUploader (
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    nexusUrl: '52.249.250.21:8081/repository/Djecommerce-artifact/',
-                    groupId: 'zed',
-                    version: "${version}",
-                    repository: 'Djecommerce-artifact',
-                    credentialsId: 'NEXUS-CRED',
-                    artifacts: [
-                            [artifactId: 'Django-ecommerce',
-                            classifier: 'file',
-                            file: 'dist/Django-ecommerce-'+version+'.tar.gz',
-                            type: 'tar.gz']
-                     ]
-                )
-            }
-        }
+//        stage('Check for security vulnerabilities') {
+//            steps {
+//                sh "safety check "
+//            }
+//        }
 
-        stage('Build & Push Docker image to Nexus') {
-            steps {
-                script {
-                  docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
-                    sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
-                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-                    sh "sudo docker push 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-                  }
-                }
-            }
-        }
 
-        stage('Kubernetes Deployment') {
-            steps {
-                echo "passs"
-                //Install k8s-cli plugin
-                //withKubeConfig([credentialsId: 'kubeconfig']) {
-                   // sh "sed -i 's#replace-image#my-django-ecommerce-image:$BUILD_NUMBER#g' DJ-ecommerce-deploy.yaml"
-                   // sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
-               // }
-            }
-        }
+//        stage('SonarQube') {
+//            steps {
+//                //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
+//                    echo "pass"
+//                    //sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-a5233b190e794c6b.labs.kodekloud.com -Dsonar.login=sqp_cfe7a72544e6f2bb7e46af34e32dce874e219e9e"
+//                //}
+//            }
+//        }
+//        stage('Publish Artifact to Nexus') {
+//            steps {
+//                nexusArtifactUploader (
+//                    nexusVersion: 'nexus3',
+//                    protocol: 'http',
+//                    nexusUrl: '52.249.250.21:8081/repository/Djecommerce-artifact/',
+//                    groupId: 'zed',
+//                    version: "${version}",
+//                    repository: 'Djecommerce-artifact',
+//                    credentialsId: 'NEXUS-CRED',
+//                    artifacts: [
+//                            [artifactId: 'Django-ecommerce',
+//                            classifier: 'file',
+//                            file: 'dist/Django-ecommerce-'+version+'.tar.gz',
+//                            type: 'tar.gz']
+//                     ]
+//                )
+//            }
+//        }
+
+//        stage('Build & Push Docker image to Nexus') {
+//            steps {
+//                script {
+//                  docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
+//                    sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
+//                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+//                    sh "sudo docker push 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+//                  }
+//                }
+//            }
+//        }
+//
+//        stage('Kubernetes Deployment') {
+//            steps {
+//                echo "pass"
+//                //Install k8s-cli plugin
+//                //withKubeConfig([credentialsId: 'kubeconfig']) {
+//                   // sh "sed -i 's#replace-image#my-django-ecommerce-image:$BUILD_NUMBER#g' DJ-ecommerce-deploy.yaml"
+//                   // sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
+//               // }
+//            }
+//        }
     }
 }

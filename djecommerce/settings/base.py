@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
 SECRET_KEY = config('SECRET_KEY')
-
+AUTH_USER_MODEL = 'core.UserProfile'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
