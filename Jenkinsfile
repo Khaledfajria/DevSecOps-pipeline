@@ -57,11 +57,13 @@ pipeline {
 
         stage('Check for security vulnerabilities') {
             steps {
-                sh "/var/lib/jenkins/.local/bin/safety check -r requirements.txt --output json > report.json"
+                sh "pip install dependency-check"
+                sh "/var/lib/jenkins/.local/bin/dependency-check --disableAssembly -s . -o build --project '$(python ./setup.py --name)' --exclude '.git/**' --exclude '.venv/**' --exclude '**/__pycache__/**' --exclude '.tox/**' && xdg-open build/dependency-check-report.html"
+                //sh "/var/lib/jenkins/.local/bin/safety check -r requirements.txt --output json > report.json"
             }
             post {
                always {
-                    dependencyCheckPublisher pattern: './report.html'
+                    dependencyCheckPublisher pattern: 'build/dependency-check-report.html'
                }
             }
         }
