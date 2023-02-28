@@ -57,7 +57,7 @@ pipeline {
 
         stage('Check for security vulnerabilities') {
             steps {
-                sh "/var/lib/jenkins/.local/bin/safety check --full-report -r requirements.txt --output text "
+                sh "/var/lib/jenkins/.local/bin/safety check -r requirements.txt --output json > report.json"
             }
             post {
                always {
