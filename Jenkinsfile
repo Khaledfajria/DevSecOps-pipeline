@@ -55,11 +55,11 @@ pipeline {
             }
         }
 
-//        stage('Check for security vulnerabilities') {
-//            steps {
-//                sh "safety check "
-//            }
-//        }
+        stage('Check for security vulnerabilities') {
+            steps {
+                sh "safety check "
+            }
+        }
 
 
 //        stage('SonarQube') {
