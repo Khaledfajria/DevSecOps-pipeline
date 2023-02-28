@@ -57,7 +57,18 @@ pipeline {
 
         stage('Check for security vulnerabilities') {
             steps {
-                sh "/var/lib/jenkins/.local/bin/safety check "
+                sh "/var/lib/jenkins/.local/bin/safety check --full-report -r requirements.txt "
+            }
+            post {
+               always {
+                  // Publish HTML report
+                  publishHTML([
+                      allowMissing: true,
+                      reportDir: 'safety',
+                      reportFiles: 'report.html',
+                      reportName: 'Safety Report'
+                  ])
+               }
             }
         }
 
