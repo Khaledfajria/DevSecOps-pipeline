@@ -61,15 +61,7 @@ pipeline {
             }
             post {
                always {
-                  // Publish HTML report
-                  publishHTML([
-                      allowMissing: true,
-                      keepAll: true,
-                      alwaysLinkToLastBuild: true,
-                      reportDir: '.',
-                      reportFiles: 'report.html',
-                      reportName: 'Safety Report'
-                  ])
+                    dependencyCheckPublish pattern: 'dist/report.html'
                }
             }
         }
