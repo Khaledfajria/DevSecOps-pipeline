@@ -3,8 +3,7 @@ pipeline {
 
     environment {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
-       BUMPVERSION = "/var/lib/jenkins/.local/bin/bumpversion"
-       COVERAGE    = "/var/lib/jenkins/.local/bin/coverage"
+       BIN_PATH    = "/var/lib/jenkins/.local/bin
        //DOCKER_REGISTRY = "http://52.249.250.21:8070/repository/docker"
        //DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
@@ -27,7 +26,7 @@ pipeline {
             steps {
                 script {
                     echo "incrementing app version..."
-                    sh "$BUMPVERSION --allow-dirty patch"
+                    sh "$BIN_PATH/bumpversion --allow-dirty patch"
                     version = sh(returnStdout: true, script: "grep -o 'current_version = [0-9.]*' .bumpversion.cfg | cut -d ' ' -f 3").trim()
                     env.IMAGE_TAG = "$version-$BUILD_NUMBER"
                 }
@@ -49,22 +48,15 @@ pipeline {
 
         stage('Unit Tests') {
             steps {
-                sh "$COVERAGE run --source='.' manage.py test"
-                sh "$COVERAGE xml"
+                sh "$BIN_PATH/coverage run --source='.' manage.py test"
+                sh "$BIN_PATH/coverage xml"
 
             }
         }
 
         stage('Check for security vulnerabilities') {
             steps {
-                sh "pip install dependency-check"
-                sh "/var/lib/jenkins/.local/bin/dependency-check --disableAssembly -s . -o build --project '$(python ./setup.py --name)' --exclude '.git/**' --exclude '.venv/**' --exclude '**/__pycache__/**' --exclude '.tox/**' && xdg-open build/dependency-check-report.html"
-                //sh "/var/lib/jenkins/.local/bin/safety check -r requirements.txt --output json > report.json"
-            }
-            post {
-               always {
-                    dependencyCheckPublisher pattern: 'build/dependency-check-report.html'
-               }
+                sh "$BIN_PATH/safety check -r requirements.txt --output json > report.json"
             }
         }
 
