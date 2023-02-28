@@ -57,7 +57,7 @@ pipeline {
 
         stage('Check for security vulnerabilities') {
             steps {
-                sh "safety check "
+                sh "var/lib/jenkins/.local/bin/safety check "
             }
         }
 
