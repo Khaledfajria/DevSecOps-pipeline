@@ -74,9 +74,9 @@ pipeline {
         stage('SonarQube - SAST') {
             steps {
                 //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
-                    echo "pass"
-                    sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-d4e37fe74c6f48b8.labs.kodekloud.com -Dsonar.login=sqp_af38116cfd5811da253967cb9926b9b05d8a9076"
-                }
+                echo "pass"
+                sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-531386dbdb3b4af0.labs.kodekloud.com -Dsonar.login=sqp_bb38d4dcae96e7c69f8c9e20749e7d89aa1baf5e"
+            }
         }
 
         stage('Publish Artifact to Nexus') {
