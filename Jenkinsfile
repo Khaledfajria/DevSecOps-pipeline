@@ -3,9 +3,9 @@ pipeline {
 
     environment {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
-       BIN_PATH    = "/var/lib/jenkins/.local/bin
-       //DOCKER_REGISTRY = "http://52.249.250.21:8070/repository/docker"
-       //DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
+       BIN_PATH = "/var/lib/jenkins/.local/bin
+       DOCKER_REGISTRY = "http://104.45.211.160:8070/repository/docker"
+       DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
     stages {
@@ -54,53 +54,63 @@ pipeline {
             }
         }
 
-        stage('Check for security vulnerabilities') {
+        stage('Vulerability Scan') {
             steps {
-                sh "$BIN_PATH/safety check -r requirements.txt --output json > report.json"
+                parallel(
+                    "DependencyCheck": {
+                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error --output json > report.json"
+                    },
+                    "TrivyScan": {
+                        sh "bash TrivyScan-docker-image.sh"
+                    },
+                    "OPA Conftest": {
+                        sh "docker run --rm  -v $(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
+                    }
+                )
             }
         }
 
 
-//        stage('SonarQube') {
-//            steps {
-//                //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
-//                    echo "pass"
-//                    //sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-a5233b190e794c6b.labs.kodekloud.com -Dsonar.login=sqp_cfe7a72544e6f2bb7e46af34e32dce874e219e9e"
-//                //}
-//            }
-//        }
-//        stage('Publish Artifact to Nexus') {
-//            steps {
-//                nexusArtifactUploader (
-//                    nexusVersion: 'nexus3',
-//                    protocol: 'http',
-//                    nexusUrl: '52.249.250.21:8081/repository/Djecommerce-artifact/',
-//                    groupId: 'zed',
-//                    version: "${version}",
-//                    repository: 'Djecommerce-artifact',
-//                    credentialsId: 'NEXUS-CRED',
-//                    artifacts: [
-//                            [artifactId: 'Django-ecommerce',
-//                            classifier: 'file',
-//                            file: 'dist/Django-ecommerce-'+version+'.tar.gz',
-//                            type: 'tar.gz']
-//                     ]
-//                )
-//            }
-//        }
+        stage('SonarQube - SAST') {
+            steps {
+                //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
+                    echo "pass"
+                    sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-7dc2c4d04c564edc.labs.kodekloud.com -Dsonar.login=sqp_83f1a8972c33740851a38c469d87c4eb694dcacb"
+                }
+            }
+        }
+        stage('Publish Artifact to Nexus') {
+            steps {
+                nexusArtifactUploader (
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    nexusUrl: '104.45.211.160:8081/repository/Djecommerce-artifact/',
+                    groupId: 'zed',
+                    version: "${version}",
+                    repository: 'Djecommerce-artifact',
+                    credentialsId: 'NEXUS-CRED',
+                    artifacts: [
+                            [artifactId: 'Django-ecommerce',
+                            classifier: 'file',
+                            file: 'dist/Django-ecommerce-'+version+'.tar.gz',
+                            type: 'tar.gz']
+                     ]
+                )
+            }
+        }
 
-//        stage('Build & Push Docker image to Nexus') {
-//            steps {
-//                script {
-//                  docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
-//                    sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
-//                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-//                    sh "sudo docker push 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-//                  }
-//                }
-//            }
-//        }
-//
+        stage('Build & Push Docker image to Nexus') {
+            steps {
+                script {
+                  docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
+                    sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
+                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker push 52.249.250.21:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                  }
+                }
+            }
+        }
+
 //        stage('Kubernetes Deployment') {
 //            steps {
 //                echo "pass"
