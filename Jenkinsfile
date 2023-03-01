@@ -103,6 +103,7 @@ pipeline {
             steps {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
+                    sh "whoami"
                     sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
                     sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 40.76.25.232:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                     sh "sudo docker push 40.76.25.232:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
