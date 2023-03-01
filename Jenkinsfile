@@ -75,7 +75,7 @@ pipeline {
             steps {
                 //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
                     echo "pass"
-                    sh "/home/admin/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-7dc2c4d04c564edc.labs.kodekloud.com -Dsonar.login=sqp_83f1a8972c33740851a38c469d87c4eb694dcacb"
+                    sh "/home/bob/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-7dc2c4d04c564edc.labs.kodekloud.com -Dsonar.login=sqp_83f1a8972c33740851a38c469d87c4eb694dcacb"
                 }
         }
 
