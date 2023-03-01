@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dockerImageName=$(awk '/^FROM/ {print $2}' Dockerfile)
+dockerImageName=$(awk '/^FROM.* AS build/ {image=$2} /^FROM/ && !/ AS / {image=$2} END {print image}' Dockerfile)
 echo "$dockerImageName"
 
 sudo docker run --rm -v "$WORKSPACE":/root/.cache/ aquasec/trivy:0.18.3 -q image --exit-code 1 --severity HIGH --light "$dockerImageName"
