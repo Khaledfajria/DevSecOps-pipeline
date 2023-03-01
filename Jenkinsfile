@@ -60,11 +60,10 @@ pipeline {
                 withSonarQubeEnv("SonarQube") {
                     sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-531386dbdb3b4af0.labs.kodekloud.com -Dsonar.login=sqp_bb38d4dcae96e7c69f8c9e20749e7d89aa1baf5e"
                 }
-                timeout(time: 2, unit, 'MINUTES'){
+                timeout(time: 2, unit: 'MINUTES'){
                     script {
                         waitForQualityGate abortPipeline: true
                     }
-
                 }
             }
         }
