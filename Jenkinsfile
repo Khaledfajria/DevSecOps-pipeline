@@ -54,28 +54,27 @@ pipeline {
             }
         }
 
-//        stage('Vulerability Scan') {
-//            steps {
-//                parallel(
-//                    "DependencyCheck": {
-//                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
-//                    },
-//                    "TrivyScan": {
-//                        sh "bash TrivyScan-docker-image.sh"
-//                    },
-//                    "OPA Conftest": {
-//                        sh "sudo docker run --rm  -v \$(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
-//                    }
-//                )
-//            }
-//        }
-
-
         stage('SonarQube - SAST') {
             steps {
                 //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
                 echo "pass"
                 sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-531386dbdb3b4af0.labs.kodekloud.com -Dsonar.login=sqp_bb38d4dcae96e7c69f8c9e20749e7d89aa1baf5e"
+            }
+        }
+
+        stage('Vulerability Scan') {
+            steps {
+                parallel(
+                    "DependencyCheck": {
+                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
+                    },
+                    "TrivyScan": {
+                        sh "bash TrivyScan-docker-image.sh"
+                    },
+                    "OPA Conftest": {
+                        sh "sudo docker run --rm  -v \$(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
+                    }
+                )
             }
         }
 
@@ -111,15 +110,14 @@ pipeline {
             }
         }
 
-//        stage('Kubernetes Deployment') {
-//            steps {
-//                echo "pass"
-//                //Install k8s-cli plugin
-//                //withKubeConfig([credentialsId: 'kubeconfig']) {
-//                   // sh "sed -i 's#replace-image#my-django-ecommerce-image:$BUILD_NUMBER#g' DJ-ecommerce-deploy.yaml"
-//                   // sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
-//               // }
-//            }
-//        }
+        stage('Kubernetes Deployment') {
+            steps {
+                echo "pass"
+                withKubeConfig([credentialsId: 'kubeconfig']) {
+                    sh "sed -i 's#replace-image#20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}#g' DJ-ecommerce-deploy.yaml"
+                    sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
+                }
+            }
+        }
     }
 }
