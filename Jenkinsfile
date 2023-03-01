@@ -58,7 +58,7 @@ pipeline {
             steps {
                 parallel(
                     "DependencyCheck": {
-                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error --output json > report.json"
+                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
                     },
                     "TrivyScan": {
                         sh "bash TrivyScan-docker-image.sh"
