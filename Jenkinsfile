@@ -63,21 +63,21 @@ pipeline {
             }
         }
 
-//        stage('Vulerability Scan') {
-//            steps {
-//                parallel(
-//                    "DependencyCheck": {
-//                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
-//                    },
-//                    "TrivyScan": {
-//                        sh "bash TrivyScan-docker-image.sh"
-//                    },
-//                    "OPA Conftest": {
-//                        sh "sudo docker run --rm  -v \$(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
-//                    }
-//                )
-//            }
-//        }
+        stage('Vulerability Scan') {
+            steps {
+                parallel(
+                    "DependencyCheck": {
+                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
+                    },
+                    "TrivyScan": {
+                        sh "bash TrivyScan-docker-image.sh"
+                    },
+                    "OPA Conftest": {
+                        sh "sudo docker run --rm  -v \$(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
+                    }
+                )
+            }
+        }
 
         stage('Publish Artifact to Nexus') {
             steps {
