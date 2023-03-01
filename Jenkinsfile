@@ -9,14 +9,15 @@ pipeline {
     }
 
     stages {
-//        stage('Checkout Code') {
-//            steps {
-//                script {
-//                    sh "git checkout test"
-//                    sh "git pull origin test"
-//                }
-//            }
-//        }
+        stage('Checkout Branch') {
+            steps {
+                script {
+                    sh "git checkout test"
+                    sh "git pull origin test"
+                }
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 sh "pip install -r requirements.txt"
@@ -112,7 +113,7 @@ pipeline {
 
         stage('Kubernetes Deployment') {
             steps {
-                echo "pass"
+                echo "passs"
                 withKubeConfig([credentialsId: 'kubeconfig']) {
                     sh "sed -i 's#replace-image#20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}#g' DJ-ecommerce-deploy.yaml"
                     sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
