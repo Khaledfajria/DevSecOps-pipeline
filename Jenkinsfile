@@ -57,9 +57,15 @@ pipeline {
 
         stage('SonarQube - SAST') {
             steps {
-                //withEnv(["SONAR_TOKEN=${env.SONAR_TOKEN}"]) {
-                echo "pass"
-                sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-531386dbdb3b4af0.labs.kodekloud.com -Dsonar.login=sqp_bb38d4dcae96e7c69f8c9e20749e7d89aa1baf5e"
+                withSonarQubeEnv("SonarQube") {
+                    sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-531386dbdb3b4af0.labs.kodekloud.com -Dsonar.login=sqp_bb38d4dcae96e7c69f8c9e20749e7d89aa1baf5e"
+                }
+                timeout(time: 2, unit, 'MINUTES'){
+                    script {
+                        waitForQualityGate abortPipeline: true
+                    }
+
+                }
             }
         }
 
@@ -103,7 +109,7 @@ pipeline {
             steps {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
-                    sh "docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
+                    sh "docker build -t my-django-ecommerce-image:${IMAGE_TAG} ."
                     sh "docker tag my-django-ecommerce-image:${IMAGE_TAG} 20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                     sh "docker push 20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                   }
@@ -111,9 +117,8 @@ pipeline {
             }
         }
 
-        stage('Kubernetes Deployment') {
+        stage('Deploying Django E-commerce Application to Kubernetes') {
             steps {
-                echo "passs"
                 withKubeConfig([credentialsId: 'kubeconfig']) {
                     sh "sed -i 's#replace-image#20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}#g' DJ-ecommerce-deploy.yaml"
                     sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
