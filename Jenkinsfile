@@ -9,14 +9,14 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                script {
-                    sh "git checkout test"
-                    sh "git pull origin test"
-                }
-            }
-        }
+//        stage('Checkout Code') {
+//            steps {
+//                script {
+//                    sh "git checkout test"
+//                    sh "git pull origin test"
+//                }
+//            }
+//        }
         stage('Install Dependencies') {
             steps {
                 sh "pip install -r requirements.txt"
