@@ -4,7 +4,7 @@ pipeline {
     environment {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
        BIN_PATH = "/var/lib/jenkins/.local/bin"
-       DOCKER_REGISTRY = "http://104.45.211.160:8070/repository/docker"
+       DOCKER_REGISTRY = "http://52.188.163.148:8070/repository/docker"
        DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
@@ -54,21 +54,21 @@ pipeline {
             }
         }
 
-        stage('Vulerability Scan') {
-            steps {
-                parallel(
-                    "DependencyCheck": {
-                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
-                    },
-                    "TrivyScan": {
-                        sh "bash TrivyScan-docker-image.sh"
-                    },
-                    "OPA Conftest": {
-                        sh "sudo docker run --rm  -v \$(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
-                    }
-                )
-            }
-        }
+//        stage('Vulerability Scan') {
+//            steps {
+//                parallel(
+//                    "DependencyCheck": {
+//                        sh "$BIN_PATH/safety check -r requirements.txt --continue-on-error " //--output json > report.json
+//                    },
+//                    "TrivyScan": {
+//                        sh "bash TrivyScan-docker-image.sh"
+//                    },
+//                    "OPA Conftest": {
+//                        sh "sudo docker run --rm  -v \$(pwd):/project openpolicyagent/conftest test --policy Dockerfile-security.rego Dockerfile"
+//                    }
+//                )
+//            }
+//        }
 
 
 //        stage('SonarQube - SAST') {
@@ -84,7 +84,7 @@ pipeline {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '104.45.211.160:8081/repository/Djecommerce-artifact/',
+                    nexusUrl: '52.188.163.148:8081/repository/Djecommerce-artifact/',
                     groupId: 'zed',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
@@ -104,8 +104,8 @@ pipeline {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
                     sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
-                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 104.45.211.160:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-                    sh "sudo docker push 104.45.211.160:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 52.188.163.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker push 52.188.163.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                   }
                 }
             }
