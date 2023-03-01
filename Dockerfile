@@ -6,10 +6,10 @@ FROM python:3.10-alpine
 RUN addgroup -S devsecops && adduser -S django -G devsecops
 
 # Set the working directory in the container
-WORKDIR /home/app
+WORKDIR app/
 
 # Copy the source distribution archive to the container
-COPY dist/Django-ecommerce-*.tar.gz /home/app/
+COPY dist/Django-ecommerce-*.tar.gz app/
 
 # Extract the source distribution archive and install the package
 RUN tar -xzf Django-ecommerce-*.tar.gz --strip-components=1 && \
