@@ -3,7 +3,7 @@ pipeline {
 
     environment {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
-       BIN_PATH = "/var/lib/jenkins/.local/bin
+       BIN_PATH = "/var/lib/jenkins/.local/bin"
        DOCKER_REGISTRY = "http://104.45.211.160:8070/repository/docker"
        DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
