@@ -104,8 +104,8 @@ pipeline {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
                     sh "sudo docker build --no-cache -t my-django-ecommerce-image:${IMAGE_TAG} ."
-//                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 104.45.211.160:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-//                    sh "sudo docker push 104.45.211.160:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker tag my-django-ecommerce-image:${IMAGE_TAG} 104.45.211.160:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "sudo docker push 104.45.211.160:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                   }
                 }
             }
