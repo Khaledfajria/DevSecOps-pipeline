@@ -3,8 +3,8 @@
 dockerImageName=$(awk '/^FROM.* AS build/ {image=$2} /^FROM/ && !/ AS / {image=$2} END {print image}' Dockerfile)
 echo "$dockerImageName"
 
-docker run --rm -v "$WORKSPACE":/root/.cache/ aquasec/trivy:0.37.3 -q image --exit-code 1 --severity HIGH --light "$dockerImageName"
-docker run --rm -v "$WORKSPACE":/root/.cache/ aquasec/trivy:0.37.3 -q image --exit-code 1 --severity CRITICAL --light "$dockerImageName"
+docker run --rm -v "$WORKSPACE":/"$USER"/.cache/ aquasec/trivy:0.37.3 -q image --exit-code 1 --severity HIGH --light "$dockerImageName"
+docker run --rm -v "$WORKSPACE":/"$USER"/.cache/ aquasec/trivy:0.37.3 -q image --exit-code 1 --severity CRITICAL --light "$dockerImageName"
 
     # Trivy scan result processing
     exit_code=$?
