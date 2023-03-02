@@ -19,6 +19,9 @@ pipeline {
         }
 
         stage('Install Dependencies') {
+            when {
+                beforeAgent true
+            }
             steps {
                 sh "pip install -r requirements.txt"
             }
