@@ -4,7 +4,7 @@ pipeline {
     environment {
        //SONAR_TOKEN = credentials('SONAR_TOKEN')
        BIN_PATH = "/var/lib/jenkins/.local/bin"
-       DOCKER_REGISTRY = "http://20.84.80.148:8070/repository/docker"
+       DOCKER_REGISTRY = "http://74.235.12.24:8070/repository/docker"
        DOCKER_REGISTRY_CREDENTIALS = credentials('NEXUS-CRED')
     }
 
@@ -58,7 +58,7 @@ pipeline {
         stage('SonarQube - SAST') {
             steps {
                 withSonarQubeEnv("SonarQube") {
-                    sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-531386dbdb3b4af0.labs.kodekloud.com -Dsonar.login=sqp_bb38d4dcae96e7c69f8c9e20749e7d89aa1baf5e"
+                    sh "/var/lib/jenkins/.sonar/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner -Dsonar.projectKey=django-eco -Dsonar.host.url=https://9000-port-0d10cafb0e22450f.labs.kodekloud.com -Dsonar.login=sqp_7a9daad7224c0fa9d6702332665edb722c5e4c10"
                 }
                 timeout(time: 2, unit: 'MINUTES'){
                     script {
@@ -89,7 +89,7 @@ pipeline {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    nexusUrl: '20.84.80.148:8081/repository/Djecommerce-artifact/',
+                    nexusUrl: '74.235.12.24:8081/repository/Djecommerce-artifact/',
                     groupId: 'zed',
                     version: "${version}",
                     repository: 'Djecommerce-artifact',
@@ -109,8 +109,8 @@ pipeline {
                 script {
                   docker.withRegistry("${DOCKER_REGISTRY}", "NEXUS-CRED") {
                     sh "docker build -t my-django-ecommerce-image:${IMAGE_TAG} ."
-                    sh "docker tag my-django-ecommerce-image:${IMAGE_TAG} 20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
-                    sh "docker push 20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "docker tag my-django-ecommerce-image:${IMAGE_TAG} 74.235.12.24:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
+                    sh "docker push 74.235.12.24:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}"
                   }
                 }
             }
@@ -119,7 +119,7 @@ pipeline {
         stage('Deploying Django E-commerce Application to Kubernetes') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh "sed -i 's#replace-image#20.84.80.148:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}#g' DJ-ecommerce-deploy.yaml"
+                    sh "sed -i 's#replace-image#74.235.12.24:8070/repository/docker/my-django-ecommerce-image:${IMAGE_TAG}#g' DJ-ecommerce-deploy.yaml"
                     sh "kubectl apply -f DJ-ecommerce-deploy.yaml"
                 }
             }
